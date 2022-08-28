@@ -3,23 +3,24 @@ package com.mintic.project3;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "transaction")
+@Table(name = "Transaction")
 public class MovimientoDinero {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @Column(name = "Monto")
     private long monto;
+    @Column(name = "Concepto")
     private String concepto;
-
     @ManyToOne
-    @JoinColumn(name = "Empleado_id")
-    private Empleado empleado;
+    @JoinColumn(name = "empleado_id")
+    private Empleado usuario;
 
-    public MovimientoDinero(long monto, String concepto, Empleado empleado) {
+    public MovimientoDinero(long monto, String concepto, Empleado usuario) {
         this.monto = monto;
         this.concepto = concepto;
-        this.empleado = empleado;
+        this.usuario = usuario;
     }
 
     public long getMonto() {
@@ -38,12 +39,12 @@ public class MovimientoDinero {
         this.concepto = concepto;
     }
 
-    public Empleado getempleado() {
-        return empleado;
+    public Empleado getUsuario() {
+        return usuario;
     }
 
-    public void setUsuarioMov(Empleado empleado) {
-        this.empleado = empleado;
+    public void setUsuario(Empleado usuario) {
+        this.usuario = usuario;
     }
 
     public int getId() {
@@ -55,3 +56,4 @@ public class MovimientoDinero {
     }
     //verificar uml
 }
+

@@ -1,19 +1,20 @@
 package com.mintic.project3;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="Enterprise")
 public class Empresa {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @Column(name = "Nombre", unique = true)
     private String nombre;
+    @Column(name = "Direccion")
     private String direccion;
+    @Column(name = "Telefono")
     private String telefono;
+    @Column(name = "NIT", unique = true)
     private String NIT;
 
     public Empresa(String nombre, String direccion, String telefono, String NIT) {
@@ -24,10 +25,12 @@ public class Empresa {
     }
 
     public String getNombre() {
+
         return nombre;
     }
 
     public void setNombre(String nombre) {
+
         this.nombre = nombre;
     }
 
